@@ -1,4 +1,3 @@
-/* global chrome */
 import "./App.css";
 import Clock from "react-clock";
 import React from "react";
@@ -14,7 +13,7 @@ class Main extends React.Component {
     this.state = {
       date: new Date(),
       //text
-      text: "",
+      text: localStorage.getItem("text") ? localStorage.getItem("text") : "",
       //weather...
       city: "",
       temp: "",
@@ -32,16 +31,15 @@ class Main extends React.Component {
   // refreshes date every second so that the second hand ticks correctly on the clock...
   componentDidMount() {
     setInterval(
-      () => this.setState({ date: new Date(), count: 1, getData: false }),
+      () =>
+        this.setState({
+          date: new Date(),
+          count: 1,
+          getData: false,
+          text: localStorage.getItem("text")
+        }),
       1000
     );
-    /* let defaultText = "";
-    chrome.storage.sync.get({ text: defaultText }, function(data) {
-      // data.links will be either the stored value, or defaultValue if nothing is set
-      chrome.storage.sync.set({ text: data.text }, function() {
-        // The value is now stored, so you don't have to do this again
-      });
-    });*/
 
     console.log("requesting location...");
 
@@ -87,11 +85,8 @@ class Main extends React.Component {
   }
 
   ///for the textarea....
-  handleChange(value) {
-    this.setState({ text: value });
-    chrome.storage.sync.set({ text: value }, function() {
-      console.log("Value is set to " + value);
-    });
+  handleChange(x) {
+    localStorage.setItem("text", x);
   }
 
   render() {
