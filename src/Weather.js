@@ -7,9 +7,9 @@ export default function Weather(props) {
 	const [desc, setDesc] = useState(null);
 	const [iconid, setIcon] = useState(null);
 
-	if (props.getData) {
+	if (props.getData <= 2) {
 		let key = "d24b66ef886fe3ba438afda594de909b";
-		let proxy = "https://cors-anywhere.herokuapp.com/";
+		let proxy = "https://cors-anywhere.herokuapp.com/"  
 		fetch(
 			`${proxy}https://api.darksky.net/forecast/${key}/${props.lat},${props.long}`
 		)
