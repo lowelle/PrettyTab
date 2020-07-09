@@ -9,6 +9,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 #container {
@@ -278,7 +279,12 @@ theme dropdown button
   background: black;
   display: flex;
   flex-direction: row;
-  opacity: 0.5;
+  opacity: 0.75;
   height: 25px;
   color: grey;
+}
+
+.themetext {
+  position: relative;
+  top: -7px;
 }

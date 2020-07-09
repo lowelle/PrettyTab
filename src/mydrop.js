@@ -144,7 +144,7 @@ class Drop extends React.Component {
 	render() {
 		return (
 			<div className="mydrop theme">
-				<div>theme:</div>
+				<div className="themetext">theme:</div>
 				<button className="mydrop" onClick={this.themeBlack}>
 					Black
 				</button>
